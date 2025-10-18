@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Private Photos</title>
+  <style>
+    body{font-family:Arial; padding:30px}
+    .hidden{display:none}
+    img{width:200px; margin:8px}
+  </style>
+</head>
+<body>
+  <h2>Enter ID & Password</h2>
+  <div id="login">
+    <input id="id" placeholder="ID"><br><br>
+    <input id="pw" placeholder="Password" type="password"><br><br>
+    <button onclick="check()">View</button>
+    <p id="err" style="color:red"></p>
+  </div>
+
+  <div id="gallery" class="hidden">
+    <button onclick="logout()">Logout</button>
+    <h3>Photos</h3>
+    <!-- Add your images here -->
+    <img src="photos/img1.jpg" alt="">
+    <img src="photos/img2.jpg" alt="">
+  </div>
+
+  <script>
+    const CORRECT_ID = "bavaa";
+    const CORRECT_PW = "2723";
+
+    function check(){
+      const id = document.getElementById("id").value;
+      const pw = document.getElementById("pw").value;
+      if(id === CORRECT_ID && pw === CORRECT_PW){
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("gallery").classList.remove("hidden");
+      } else {
+        document.getElementById("err").innerText = "Wrong ID or password";
+      }
+    }
+    function logout(){
+      document.getElementById("gallery").classList.add("hidden");
+      document.getElementById("login").classList.remove("hidden");
+      document.getElementById("id").value = "";
+      document.getElementById("pw").value = "";
+    }
+  </script>
+</body>
+</html>
